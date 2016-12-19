@@ -1,0 +1,17 @@
+{
+  "name": "node-js-getting-started",
+  "description": "A sample Node.js app using Express 4",
+  "main": "app/app.js",
+  "license": "MIT",
+  "homepage": "https://github.com/heroku/node-js-getting-started",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "1.6.0",
+    "bootstrap": "3.3.7",
+    "moment": "2.17.1"
+  }
+}

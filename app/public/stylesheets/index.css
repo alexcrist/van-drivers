@@ -1,0 +1,42 @@
+.main-container {
+  width: 50%;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.driver-table {
+
+}
+
+.driver-row {
+  white-space: nowrap;
+  padding-bottom: 5px;
+}
+
+.driver-row div {
+  display: inline-block;
+  text-align: center;
+}
+
+.day {
+  width: 14%;
+}
+
+.date {
+  width: 20%;
+}
+
+.one-driver {
+  width: 59%;
+  margin-left: .5%;
+  margin-right: .5%;
+}
+
+.two-drivers {
+  width: 29%;
+  margin-left: .5%;
+  margin-right: .5%;
+}
