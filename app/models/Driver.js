@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var model = mongoose.model('Driver', new mongoose.Schema({
   date: String,
   name: String,
-  id: Number
+  id: String
 }));
 
 module.exports = model;

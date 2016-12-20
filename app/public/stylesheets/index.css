@@ -1,10 +1,28 @@
 .main-container {
-  width: 50%;
+  width: 95%;
+  max-width: 500px;
   margin: auto;
 }
 
 .title {
   text-align: center;
+}
+
+.week-select {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.week-arrow {
+  display: inline-block;
+}
+
+.week-start {
+  display: inline-block;
+}
+
+.week-end {
+  display: inline-block;
 }
 
 .driver-table {
@@ -27,6 +45,10 @@
 
 .date {
   width: 20%;
+}
+
+.driver {
+  margin: auto .5%;
 }
 
 .one-driver {

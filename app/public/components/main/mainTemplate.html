@@ -1,33 +1,21 @@
+<div class="week-select">
+  <button ng-click="ctrl.prevWeek()" 
+          class="btn btn-default week-arrow">&lt;</button>
+  <div class="week-start">{{ ctrl.week[0].date }}</div>
+  <div class="week-end"> to {{ ctrl.week[3].date }}</div>
+  <button ng-click="ctrl.nextWeek()" 
+          class="btn btn-default week-arrow">&gt;</button>
+</div>
+
 <div class="driver-table">
-  <div class="driver-row">
-    <div class="day">Mon</div>
-    <div class="date">11/1/17</div>
-    <button ng-click="ctrl.editDriver('mon', 1)" 
-            class="btn btn-default two-drivers">{{ctrl.mon1}}</button><!--
- --><button ng-click="ctrl.editDriver('mon', 2)" 
-            class="btn btn-default two-drivers">{{ctrl.mon2}}</button>
-  </div>
-
-  <div class="driver-row">
-    <div class="day">Tues</div>
-    <div class="date">11/1/17</div>
-    <button ng-click="ctrl.editDriver('tue', 1)" 
-            class="btn btn-default one-driver">{{ctrl.tue1}}</button>
-  </div>
-
-  <div class="driver-row">
-    <div class="day">Wed</div>
-    <div class="date">11/1/17</div>
-    <button ng-click="ctrl.editDriver('wed', 1)" 
-            class="btn btn-default one-driver">{{ctrl.wed1}}</button>
-  </div>
-  
-  <div class="driver-row">
-    <div class="day">Thurs</div>
-    <div class="date">11/1/17</div>
-    <button ng-click="ctrl.editDriver('thu', 1)" 
-            class="btn btn-default two-drivers">{{ctrl.thu1}}</button><!--
- --><button ng-click="ctrl.editDriver('thu', 2)" 
-            class="btn btn-default two-drivers">{{ctrl.thu2}}</button>
+  <div ng-repeat="day in ctrl.week" class="driver-row">
+    <div class="day">{{ day.name }}</div>
+    <div class="date">{{ day.date }}</div>
+    <button ng-repeat="driverNum in ctrl.range(day.numDrivers)"
+            ng-click="ctrl.createDriver(day.date)"
+            ng-style="{ width: {{ 60 / day.numDrivers - 1 }} + '%'}"
+            class="btn btn-default driver">
+      {{ day.drivers[driverNum].name || ctrl.driverPlaceholder }}
+    </button>
   </div>
 </div>
