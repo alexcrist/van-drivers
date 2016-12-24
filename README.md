@@ -1,6 +1,8 @@
 # van drivers
 MEAN stack Heroku app for scheduling van drivers for climbing team practices.
 
+![alt tag](demo.gif)
+
 ## Features
 - Save/delete van drivers in a Mongo database
 - Scroll through mutliple weeks of practice

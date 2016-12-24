@@ -144,7 +144,7 @@
 
     // Callback to be called if deleteDriver succeeds
     function deleteDriverSuccess() {
-      statusSuccess('Driver appointment successfully deleted.');
+      statusSuccess('Driver deleted.');
       getDrivers();
     }
 

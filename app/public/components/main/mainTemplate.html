@@ -38,7 +38,7 @@
           id="driver-input-{{ $index }}">
 
       <!-- An input field for saving a new driver -->
-      <div ng-hide="day.drivers[ctrl.selectedDriver[$index]].name"
+      <div ng-if="!day.drivers[ctrl.selectedDriver[$index]].name"
            class="well driver-input">
         <form role="form">  
           <div class="row">
@@ -64,7 +64,7 @@
       </div>
 
       <!-- An input field for deleting an existing driver -->
-      <div ng-show="day.drivers[ctrl.selectedDriver[$index]].name"
+      <div ng-if="day.drivers[ctrl.selectedDriver[$index]].name"
            ng-click="ctrl.deleteDriver(day.drivers[ctrl.selectedDriver[$index]])"
            class="well driver-input"
            data-toggle="collapse"
