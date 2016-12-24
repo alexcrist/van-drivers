@@ -1,21 +1,76 @@
-<div class="week-select">
+<button ng-click="ctrl.init()" class="btn btn-primary today">
+  Today: {{ ctrl.today | amDateFormat:'ddd, MMM Do, YYYY' }}
+</button>
+
+<div class="bg-info week-select">
   <button ng-click="ctrl.prevWeek()" 
-          class="btn btn-default week-arrow">&lt;</button>
-  <div class="week-start">{{ ctrl.week[0].date }}</div>
-  <div class="week-end"> to {{ ctrl.week[3].date }}</div>
+          class="btn btn-default btn-sm week-arrow">&lt;</button>
+  <div class="week-start">
+    {{ ctrl.week[0].date | amDateFormat:'MMM Do, YYYY' }}
+  </div>
+  <div class="week-end">
+    &#8213; {{ ctrl.week[3].date | amDateFormat:'MMM Do, YYYY' }}
+  </div>
   <button ng-click="ctrl.nextWeek()" 
-          class="btn btn-default week-arrow">&gt;</button>
+          class="btn btn-default btn-sm week-arrow">&gt;</button>
 </div>
 
 <div class="driver-table">
-  <div ng-repeat="day in ctrl.week" class="driver-row">
+  <div ng-repeat="day in ctrl.week track by $index" class="driver-row">
     <div class="day">{{ day.name }}</div>
-    <div class="date">{{ day.date }}</div>
-    <button ng-repeat="driverNum in ctrl.range(day.numDrivers)"
-            ng-click="ctrl.createDriver(day.date)"
-            ng-style="{ width: {{ 60 / day.numDrivers - 1 }} + '%'}"
-            class="btn btn-default driver">
-      {{ day.drivers[driverNum].name || ctrl.driverPlaceholder }}
-    </button>
+    <div class="date">{{ day.date | amDateFormat:'MMM Do' }}</div>
+    <button ng-repeat="i in ctrl.array(day.numDrivers) track by $index"
+            ng-style="{ width: {{ 66 / day.numDrivers - 1 }} + '%'}"
+            ng-class="day.drivers[$index].name ? 'btn-info' : 'btn-default'"
+            ng-click="ctrl.selectedDriver[$parent.$index] = $index"
+            class="btn driver" 
+            type="button"
+            data-toggle="collapse"
+            data-target="#driver-input-{{ $parent.$index }}">
+       {{ day.drivers[$index].name || ctrl.driverPlaceholder }}
+     </button>
+
+     <div class="collapse driver-input-container" 
+          id="driver-input-{{ $index }}">
+
+      <div ng-if="!day.drivers[ctrl.selectedDriver[$index]].name" 
+           class="well driver-input">
+        <form role="form">  
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="input-group">
+                <input ng-model="name" 
+                       type="text" 
+                       class="form-control" 
+                       placeholder="Name"/>
+                <div class="input-group-btn">
+                  <button ng-click="ctrl.createDriver(name, day.date)" 
+                          type="submit" 
+                          class="btn btn-success"
+                          data-toggle="collapse"
+                          data-target="#driver-input-{{ $index }}">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div ng-if="day.drivers[ctrl.selectedDriver[$index]].name"
+           ng-click="ctrl.deleteDriver(day.drivers[ctrl.selectedDriver[$index]])"
+           class="well driver-input"
+           data-toggle="collapse"
+           data-target="#driver-input-{{ $index }}">
+        <button class="btn btn-danger delete">Delete</button>
+      </div>
+    </div>
   </div>
 </div>
+
+<div ng-show="ctrl.statusSuccess" 
+     class="bg-success status-message">{{ ctrl.statusSuccess }}</div>
+
+<div ng-show="ctrl.statusFailure" 
+     class="bg-danger status-message">{{ ctrl.statusFailure }}</div>

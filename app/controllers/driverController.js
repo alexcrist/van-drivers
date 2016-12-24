@@ -2,17 +2,24 @@
 
 var moment = require('moment'),
     Promise = require('bluebird'),
+    slackController = require('./slackController'),
     Driver = require('../models/Driver');
 
-var controller = {};
+var DAYS_IN_WEEK = 7;
 
-controller.DAYS_IN_WEEK = 7;
+var controller = {
+  getDriversByWeek: getDriversByWeek,
+  getAllDrivers: getAllDrivers,
+  createDriver: createDriver,
+  deleteDriver: deleteDriver,
+  deleteAllDrivers: deleteAllDrivers
+};
 
-controller.getDriversByWeek = function(req, res) {
+function getDriversByWeek(req, res) {
   var startDate = req.params.startDate,
       week = [];
 
-  for (var i = 0; i < controller.DAYS_IN_WEEK; i++) {
+  for (var i = 0; i < DAYS_IN_WEEK; i++) {
     week.push([]);
   }
 
@@ -31,9 +38,9 @@ controller.getDriversByWeek = function(req, res) {
   }).catch(function(err) {
     res.status(500).send(err);
   });
-};
+}
 
-controller.getAllDrivers = function(req, res) {
+function getAllDrivers(req, res) {
   Driver.find({})
     .then(function(drivers) {
       res.json(drivers);
@@ -43,30 +50,36 @@ controller.getAllDrivers = function(req, res) {
     })
 }
 
-controller.createDriver = function(req, res) {
-  Driver.create({
+function createDriver(req, res) {
+  var driver = {
     name: req.body.name,
     date: req.body.date
-  }).then(function() {
-    res.sendStatus(200);
-  }).catch(function(err) {
-    res.status(500).send(err);
-  })
-};
+  }
 
-controller.deleteDriver = function(req, res) {
-  Driver.remove({ _id: req.params.id })
+  Driver.create(driver)
     .then(function() {
+      slackController.driverCreated(driver);
+      res.status(200).send(driver);
+    })
+    .catch(function(err) {
+      console.log(err);
+      res.status(500).send(err);
+    });
+}
+
+function deleteDriver(req, res) {
+  Driver.findByIdAndRemove(req.params.id)
+    .then(function(driver) {
+      slackController.driverDeleted(driver);
       res.sendStatus(200);
     })
     .catch(function(err) {
       res.status(500).send(err);
     });
-};
+}
 
-// TODO - remove eventually
-controller.deleteAllDrivers = function(req, res) {
-  Driver.remove({ name: 'alex' })
+function deleteAllDrivers(req, res) {
+  Driver.remove({})
     .then(function() {
       res.sendStatus(200);
     })

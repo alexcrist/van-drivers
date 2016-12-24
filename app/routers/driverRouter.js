@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express'),
-    mainController = require('../controllers/mainController');
+    driverController = require('../controllers/driverController');
 
 var router = express.Router();
 
@@ -11,19 +11,16 @@ router.route('/')
   });
 
 router.route('/drivers')
-  .post(mainController.createDriver);
+  .post(driverController.createDriver);
 
 router.route('/drivers/all')
-  .get(mainController.getAllDrivers)
-  .delete(mainController.deleteAllDrivers);
+  .get(driverController.getAllDrivers)
+  .delete(driverController.deleteAllDrivers);
 
 router.route('/drivers/:id')
-  .delete(mainController.deleteDriver);
+  .delete(driverController.deleteDriver);
 
 router.route('/drivers/week/:startDate')
-  .get(mainController.getDriversByWeek);
-
-
+  .get(driverController.getDriversByWeek);
 
 module.exports = router;
-

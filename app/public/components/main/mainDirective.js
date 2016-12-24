@@ -10,5 +10,5 @@
     };
   }
 
-  angular.module('main', []).directive('main', main);
+  angular.module('main', ['angularMoment']).directive('main', main);
 })();

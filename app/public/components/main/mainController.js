@@ -4,12 +4,16 @@
   function mainController($scope, $http) {
     var self = this;
 
+    self.init = init;
     self.nextWeek = nextWeek;
     self.prevWeek = prevWeek;
     self.createDriver = createDriver;
     self.deleteDriver = deleteDriver;
-    self.range = range;
+    self.array = array;
 
+    // Reference for each day as to which driver was most recently clicked
+    self.selectedDriver = [];
+    
     self.week = [
       {
         name: 'Mon',
@@ -32,33 +36,32 @@
     init();
 
     function init() {
-      var monday = moment().add(3, 'day').startOf('isoweek');
+      self.today = moment();
+      var monday = self.today.add(3, 'day').startOf('isoweek');
       loadWeek(monday);
     }
 
     function loadWeek(startDay) {
       for (var i = 0; i < self.week.length; i++) {
-        self.week[i].date = startDay.format('MM-DD-YYYY');
+        self.week[i].date = moment(startDay);
         startDay.add(1, 'day');
       }
       getDrivers();
     }
 
     function prevWeek() {
-      var prevMonday = moment(self.week[0].date, 'MM-DD-YYYY')
-        .subtract(1, 'week');
+      var prevMonday = self.week[0].date.subtract(1, 'week');
       loadWeek(prevMonday);
     }
 
     function nextWeek() {
-      var nextMonday = moment(self.week[0].date, 'MM-DD-YYYY')
-        .add(1, 'week');
+      var nextMonday = self.week[0].date.add(1, 'week');
       loadWeek(nextMonday);
     }
 
     function getDrivers() {
       self.driverPlaceholder = 'Loading...';
-      $http.get('/drivers/week/' + self.week[0].date)
+      $http.get('/drivers/week/' + self.week[0].date.format('MM-DD-YYYY'))
         .then(getDriversSuccess)
         .catch(getDriversFailure);
     }
@@ -72,27 +75,64 @@
 
     function getDriversFailure(err) {
       self.driverPlaceholder = 'Error!';
+      statusFailure('Failed to get drivers. ' + err.status);
       console.log(err);
     }
 
-    function createDriver(date) {
-      $http.post('/drivers', {
-        name: 'alex', 
-        date: date
-      }).then(getDrivers)
-        .catch(console.log);
-    }
-
-    function deleteDriver() {
-
-    }
-
-    function range(n) {
-      var array = new Array(n);
-      for (var i = 0; i < n; i++) {
-        array[i] = i;
+    function createDriver(name, date) {
+      if (!name || !date) {
+        statusFailure('Invalid name!');
+        return;
       }
-      return array;
+
+      $http.post('/drivers', {
+        name: name, 
+        date: date.format('MM-DD-YYYY')
+      }, {
+        'Content-Type': 'application/json'
+      }).then(createDriverSuccess)
+        .catch(createDriverFailure);
+    }
+
+    function createDriverSuccess(res) {
+      statusSuccess('Saved new driver: ' + res.data.name);
+      self.statusFailure = '';
+      getDrivers();
+    }
+
+    function createDriverFailure(err) {
+      statusFailure('Failed to create driver. ' + err.status);
+      console.log(err);
+    }
+
+    function deleteDriver(driver) {
+      $http.delete('/drivers/' + driver._id)
+        .then(deleteDriverSuccess)
+        .catch(deleteDriverFailure);
+    }
+
+    function deleteDriverSuccess() {
+      statusSuccess('Driver appointment successfully deleted.');
+      getDrivers();
+    }
+
+    function deleteDriverFailure(err) {
+      statusFailure('Failed to delete driver. ' + err.status);
+      console.log(err);
+    }
+
+    function statusSuccess(str) {
+      self.statusSuccess = str;
+      self.statusFailure = '';
+    }
+
+    function statusFailure(str) {
+      self.statusSuccess = '';
+      self.statusFailure = str;
+    }
+
+    function array(n) {
+      return new Array(n);
     }
   }
 
