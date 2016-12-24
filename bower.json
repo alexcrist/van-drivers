@@ -1,9 +1,9 @@
 {
-  "name": "node-js-getting-started",
-  "description": "A sample Node.js app using Express 4",
+  "name": "van-drivers",
+  "description": "App for managing van drivers.",
   "main": "app/app.js",
   "license": "MIT",
-  "homepage": "https://github.com/heroku/node-js-getting-started",
+  "homepage": "https://github.com/alexcrist/van-drivers",
   "ignore": [
     "**/.*",
     "node_modules",

@@ -15,6 +15,7 @@ var controller = {
   deleteAllDrivers: deleteAllDrivers
 };
 
+// Gets all drivers in a week starting at the given day
 function getDriversByWeek(req, res) {
   var startDate = req.params.startDate,
       week = [];
@@ -40,6 +41,7 @@ function getDriversByWeek(req, res) {
   });
 }
 
+// Gets all drivers
 function getAllDrivers(req, res) {
   Driver.find({})
     .then(function(drivers) {
@@ -47,9 +49,10 @@ function getAllDrivers(req, res) {
     })
     .catch(function(err) {
       res.status(500).send(err);
-    })
+    });
 }
 
+// Creates a new driver with the given name and date
 function createDriver(req, res) {
   var driver = {
     name: req.body.name,
@@ -67,6 +70,7 @@ function createDriver(req, res) {
     });
 }
 
+// Deletes a driver by the given ID
 function deleteDriver(req, res) {
   Driver.findByIdAndRemove(req.params.id)
     .then(function(driver) {
@@ -78,6 +82,7 @@ function deleteDriver(req, res) {
     });
 }
 
+// Deletes all drivers
 function deleteAllDrivers(req, res) {
   Driver.remove({})
     .then(function() {

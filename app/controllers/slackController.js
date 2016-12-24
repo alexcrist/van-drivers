@@ -2,8 +2,9 @@
 
 var slack = require('@slack/client');
 
-var token = process.env.SLACK_TOKEN || '',
-    web = new slack.WebClient(token);
+var TOKEN = process.env.SLACK_TOKEN || '',
+    CHANNEL = 'van-drivers',
+    WEB_CLIENT = new slack.WebClient(TOKEN);
 
 var controller = {
   message: message,
@@ -11,13 +12,11 @@ var controller = {
   driverDeleted: driverDeleted
 };
 
+// Sends a Slack message on the controller's channel with the given text
 function message(text) {
-  var channel = 'van-drivers',
-      options = {
-        as_user: true
-      };
+  var options = { as_user: true };
 
-  web.chat.postMessage(channel, text, options)
+  WEB_CLIENT.chat.postMessage(CHANNEL, text, options)
     .then(function(res) {
       console.log('Slack message sent! ' + res);
     })
@@ -26,10 +25,12 @@ function message(text) {
     });
 };
 
+// Sends a Slack message indicating that a driver has been created
 function driverCreated(driver) {
   message('*' + driver.name + '* is driving on *' + driver.date + '*!');
 }
 
+// Sends a Slack message indicating that a driver has been deleted
 function driverDeleted(driver) {
   message('*' + driver.name + '* is *no longer* driving on *' + driver.date 
     + '*.');

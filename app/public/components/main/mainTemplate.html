@@ -1,7 +1,9 @@
+<!-- Today's date -->
 <button ng-click="ctrl.init()" class="btn btn-primary today">
   Today: {{ ctrl.today | amDateFormat:'ddd, MMM Do, YYYY' }}
 </button>
 
+<!-- Week indicator and control -->
 <div class="bg-info week-select">
   <button ng-click="ctrl.prevWeek()" 
           class="btn btn-default btn-sm week-arrow">&lt;</button>
@@ -15,6 +17,7 @@
           class="btn btn-default btn-sm week-arrow">&gt;</button>
 </div>
 
+<!-- Table of drivers for this week -->
 <div class="driver-table">
   <div ng-repeat="day in ctrl.week track by $index" class="driver-row">
     <div class="day">{{ day.name }}</div>
@@ -30,10 +33,12 @@
        {{ day.drivers[$index].name || ctrl.driverPlaceholder }}
      </button>
 
+     <!-- Collapsable input field for drivers -->
      <div class="collapse driver-input-container" 
           id="driver-input-{{ $index }}">
 
-      <div ng-if="!day.drivers[ctrl.selectedDriver[$index]].name" 
+      <!-- An input field for saving a new driver -->
+      <div ng-hide="day.drivers[ctrl.selectedDriver[$index]].name"
            class="well driver-input">
         <form role="form">  
           <div class="row">
@@ -58,19 +63,23 @@
         </form>
       </div>
 
-      <div ng-if="day.drivers[ctrl.selectedDriver[$index]].name"
+      <!-- An input field for deleting an existing driver -->
+      <div ng-show="day.drivers[ctrl.selectedDriver[$index]].name"
            ng-click="ctrl.deleteDriver(day.drivers[ctrl.selectedDriver[$index]])"
            class="well driver-input"
            data-toggle="collapse"
            data-target="#driver-input-{{ $index }}">
         <button class="btn btn-danger delete">Delete</button>
       </div>
+
     </div>
   </div>
 </div>
 
+<!-- A status bubble to show success messages -->
 <div ng-show="ctrl.statusSuccess" 
      class="bg-success status-message">{{ ctrl.statusSuccess }}</div>
 
+<!-- A status bubble to show failure messages -->
 <div ng-show="ctrl.statusFailure" 
      class="bg-danger status-message">{{ ctrl.statusFailure }}</div>

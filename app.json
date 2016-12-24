@@ -1,7 +1,7 @@
 {
-  "name": "Start on Heroku: Node.js",
-  "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/heroku/node-js-getting-started",
+  "name": "van-drivers",
+  "description": "App for managing van drivers.",
+  "repository": "https://github.com/alexcrist/van-drivers",
   "keywords": [
     "node", 
     "express", 
