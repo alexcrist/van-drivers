@@ -49,7 +49,7 @@ Built using the MEAN stack for deployment with Heroku. Has Slack integration for
 - Proceed with further instructions above
 
 ## To Do
-- Add Grunt and a linter
+- Add Gulp and a linter
 
 ## Bugs
 - Save and delete input fields switch before the dialog closes upon saving/deleting a driver
