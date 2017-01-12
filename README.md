@@ -11,23 +11,30 @@ Built using the MEAN stack for deployment with Heroku. Has Slack integration for
 - Get slack notifications when drivers are added or removed
 - Customize # practice days or # van drivers per day in the front-end code
 
-## Run locally
-I'll assume your command line language is Bash
+## Run locally on macOS
 
-### Get this stuff
-- MongoDB
-- Node / NPM
+### Get Homebrew to install stuff: http://brew.sh
 
-### Do this stuff
-- Clone this application to your computer
-- In a console window, run `mongod` to start up a local MongoDB (you may have to specify a directory to save stuff)
-- In a new window, navigate to this app's base directory `cd [PATH-TO-REPO]/van-drivers`
-- Install necessary NPM packages with `npm install`
-- After this finishes, bower packages will automatically be installed
-- Run `export MONGO_URI=mongodb://localhost` to specify the URI of your MongoDB
-- (Optional) Set up Slack integration stuff (See next section)
-- Run your app with `node app/app.js`
-- Open up the app in a browser at "localhost:5000"!
+### Install this stuff if you don't have it
+- MongoDB `brew install mongodb`
+- Node / NPM `brew install node`
+- Git `brew install git`
+
+### Clone this repository to your computer
+`git clone https://github.com/alexcrist/van-drivers.git`
+
+### Start up MongoDB locally
+- Navigate to the van-drivers folder in Terminal `cd [PATH_TO_VAN-DRIVERS]/van-drivers`
+- Make a directory to store your MongoDB files `mkdir data`
+- Run MongoDB `mongod --dbpath=data`
+
+### Run the application locally
+- In a new Terminal window, navigate to the van-drivers folder
+- Install Node modules with `npm install`
+- Run `export MONGO_URI=mongodb://localhost` to specify tell the app where to connect to MongoDB
+- (Optional) Set up Slack integration
+- Start up the app with `node app/app.js`
+- Visit the app in a browser at "localhost:5000"
 
 ### Slack integration
 - Make or already have a Slack team
