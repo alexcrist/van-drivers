@@ -26,12 +26,13 @@ Built using the MEAN stack for deployment with Heroku. Has Slack integration for
 ### Start up MongoDB locally
 - Navigate to the van-drivers folder in Terminal `cd [PATH_TO_VAN-DRIVERS]/van-drivers`
 - Make a directory to store your MongoDB files `mkdir data`
-- Run MongoDB `mongod --dbpath=data`
+- Start up MongoDB `mongod --dbpath=data`
 
 ### Run the application locally
 - In a new Terminal window, navigate to the van-drivers folder
+- Install bower globally with `npm install -g bower`
 - Install Node modules with `npm install`
-- Run `export MONGO_URI=mongodb://localhost` to specify tell the app where to connect to MongoDB
+- Run `export MONGO_URI=mongodb://localhost` to tell the app where to connect to MongoDB
 - (Optional) Set up Slack integration
 - Start up the app with `node app/app.js`
 - Visit the app in a browser at "localhost:5000"
