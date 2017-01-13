@@ -18,7 +18,7 @@ app.listen(app.get('port'), function() {
 });
 
 // Connect to MongoDB
-var mongoUri = process.env.MONGO_URI || '';
+var mongoUri = process.env.MONGODB_URI || '';
 console.log('Connecting to MongoDB at ' + mongoUri);
 mongoose.Promise = Promise;
 mongoose.connect(mongoUri);
