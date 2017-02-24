@@ -11,6 +11,9 @@ Built using the MEAN stack for deployment with Heroku. Has Slack integration for
 - Get slack notifications when drivers are added or removed
 - Customize # practice days or # van drivers per day in the front-end code
 
+## Feature wish list
+- Ability to add drivers for custom special events
+
 ## Run locally on macOS
 
 ### Get Homebrew to install stuff: http://brew.sh
