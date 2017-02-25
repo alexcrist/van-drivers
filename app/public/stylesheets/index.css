@@ -35,15 +35,26 @@
 }
 
 .driver-table {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  padding: 5px 0;
+  border-radius: 0 0 5px 5px;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
   margin-bottom: 10px;
+}
+
+.driver-header {
+  border-radius: 5px 5px 0 0;
+  background: #43A047;
+  padding: 8px 16px;
+  border: 1px solid #43A047;
+  color: white;
 }
 
 .driver-row {
   white-space: nowrap;
   margin: 5px 10px;
+  padding: 0 5px;
 }
 
 .day {

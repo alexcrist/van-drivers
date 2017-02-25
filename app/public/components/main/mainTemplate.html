@@ -18,7 +18,9 @@
 </div>
 
 <!-- Table of drivers for this week -->
+<div class="driver-header">Practice</div>
 <div class="driver-table">
+
   <div ng-repeat="day in ctrl.week track by $index" class="driver-row">
     <div ng-if="day.numDrivers > 0">
       <div class="day">{{ day.name }}</div>
