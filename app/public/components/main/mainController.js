@@ -14,7 +14,7 @@
 
     // Reference for each day as to which driver was most recently clicked
     self.selectedDriver = [];
-    
+
     // A customizable list representing the days of the week that have practice
     self.week = [
       {
@@ -32,6 +32,14 @@
       {
         name: 'Thurs',
         numDrivers: 2
+      },
+      {
+        name: 'Fri',
+        numDrivers: 0
+      },
+      {
+        name: 'Sat',
+        numDrivers: 1
       }
     ];
 
@@ -44,7 +52,7 @@
       loadWeek(monday);
     }
 
-    // Based off of the given start day (should be a Monday), assign date values 
+    // Based off of the given start day (should be a Monday), assign date values
     // for all days in self.week
     function loadWeek(startDay) {
       for (var i = 0; i < self.week.length; i++) {
@@ -114,7 +122,7 @@
       }
 
       $http.post('/drivers', {
-        name: name, 
+        name: name,
         date: date.format('MM-DD-YYYY')
       }, {
         'Content-Type': 'application/json'

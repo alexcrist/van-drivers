@@ -81,6 +81,11 @@
   width: 100%;
 }
 
+.no-drivers {
+  border-top: 1px solid #ddd;
+  margin: 15px;
+}
+
 .status-message {
   padding: 5px;
   text-align: center;

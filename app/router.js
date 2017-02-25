@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express'),
-    driverController = require('../controllers/driverController');
+    driverController = require('./controllers/driverController');
 
 var router = express.Router();
 
