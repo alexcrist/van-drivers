@@ -2,7 +2,9 @@
 
 > Web application for scheduling van drivers for the Northeastern Climbing Team.
 
-![Application demo](demo.gif)
+<p align="center">
+  <img src="./demo.gif" />
+</p>
 
 ## Live Application
 
