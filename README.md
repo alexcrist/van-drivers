@@ -11,7 +11,7 @@
 - Database: `MongoDB`
 - Front end: `AngularJS`*
 
-*An updated front end written with React and Redux can be found [here](https://github.com/alexcrist/van-driver-react-redux).*
+*An updated front end written with React and Redux can be found [here](https://github.com/alexcrist/van-drivers-react-redux).*
 
 ## Features
 
