@@ -1,45 +1,45 @@
 # van-drivers
-Web application for scheduling van drivers for climbing team practices.
 
-Built using the MEAN stack for deployment with Heroku. Has Slack integration for driver notifications.
+> Web application for scheduling van drivers for climbing team practices.
 
 ![Application demo](demo.gif)
 
+## Tech Stack
+
+- Server framework: `Node.js`
+- Server request routing: `Express`
+- Database: `MongoDB`
+- Front end: `AngularJS`*
+
+*An updated front end written with React and Redux can be found [here](https://github.com/alexcrist/van-driver-react-redux).*
+
 ## Features
-- Save/delete van drivers in a Mongo database
-- Scroll through mutliple weeks of practice
-- Get slack notifications when drivers are added or removed
-- Customize # practice days or # van drivers per day in the front-end code
 
-## Feature wish list
-- Ability to add drivers for custom special events
+- Schedule and remove van drivers stored in MongoDB
+- Slack integration for notifications when drivers are added or removed
+- Paginate through different date ranges of driver entries
 
-## Run locally on macOS
+## Local Developement
 
-### Get Homebrew to install stuff: http://brew.sh
+#### Requirements
 
-### Install this stuff if you don't have it
-- MongoDB `brew install mongodb`
-- Node / NPM `brew install node`
-- Git `brew install git`
+- `Node (6.11.2)`
+- `NPM (3.10.10)`
 
-### Clone this repository to your computer
-`git clone https://github.com/alexcrist/van-drivers.git`
+### Run the Application Locally
 
-### Start up MongoDB locally
-- Navigate to the van-drivers folder in Terminal `cd [PATH_TO_VAN-DRIVERS]/van-drivers`
-- Make a directory to store your MongoDB files `mkdir data`
-- Start up MongoDB `mongod --dbpath=data`
+#### Install Dependencies
 
-### Run the application locally
-- In a new Terminal window, navigate to the van-drivers folder
-- Install Node modules with `npm install`
-- Run `export MONGODB_URI=mongodb://localhost` to tell the app where to connect to MongoDB
-- (Optional) Set up Slack integration
-- Start up the app with `node app/app.js`
-- Visit the app in a browser at "localhost:5000"
+`npm install`
 
-### Slack integration
+#### Set Up MongoDB
+
+- [Start up a local MongoDB instance](https://scotch.io/tutorials/an-introduction-to-mongodb)
+- Set the `MONGODB_URI` environment variable'
+  - `export MONGODB_URI=mongodb://localhost`
+  
+#### Set Up Slack Integration (optional)
+
 - Make or already have a Slack team
 - Login to your team online
 - Navigate to 'Build a Custom Integration' (https://[YOUR-TEAM-NAME].slack.com/apps/build/custom-integration)
@@ -48,12 +48,10 @@ Built using the MEAN stack for deployment with Heroku. Has Slack integration for
 - Copy your API Token (something like "xoxb-123BLAHBLAHBLAH")
 - Create or already have a channel called "van-drivers"
 - Add your bot to this channel
-- In a console window, set this token as an environment variable with `export SLACK_TOKEN=[YOUR-TOKEN]`
-- Proceed with further instructions above
+- Set the `SLACK_TOKEN` environment variable
+  - `export SLACK_TOKEN=[YOUR-TOKEN]`
 
-## To Do
-- Add Gulp and a linter
-- Update screenshot
+#### Start the Application
 
-## Bugs
-- Save and delete input fields switch before the dialog closes upon saving/deleting a driver
+- `npm start`
+- Go to `localhost:5000` in a browser
