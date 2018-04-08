@@ -15,9 +15,9 @@
 
 ## Features
 
-- Schedule and remove van drivers stored in MongoDB
+- Ability to schedule and remove van drivers stored in MongoDB
 - Slack integration for notifications when drivers are added or removed
-- Paginate through different date ranges of driver entries
+- Pagination through weeks of drivers
 
 ## Local Developement
 
