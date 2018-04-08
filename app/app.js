@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express'),
+    cors = require('cors'),
     http = require('http'),
     mongoose = require('mongoose'),
     Promise = require('bluebird'),
@@ -12,6 +13,7 @@ var express = require('express'),
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(router);
 app.listen(app.get('port'), function() {
