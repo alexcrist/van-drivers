@@ -33,10 +33,10 @@
 #### Set Up MongoDB
 
 - [Start up a local MongoDB instance](https://scotch.io/tutorials/an-introduction-to-mongodb)
-- Set the `MONGODB_URI` environment variable'
+- Set the `MONGODB_URI` environment variable
   - `export MONGODB_URI=mongodb://localhost`
   
-#### Set Up Slack Integration (optional)
+#### (*optional*) Set Up Slack Integration 
 
 - Make or already have a Slack team
 - Login to your team online
