@@ -7,7 +7,7 @@
 ## Tech Stack
 
 - Server framework: `Node.js`
-- Server request routing: `Express`
+- Request routing: `Express`
 - Database: `MongoDB`
 - Front end: `AngularJS`*
 
