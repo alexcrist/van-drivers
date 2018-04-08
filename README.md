@@ -4,7 +4,7 @@
 
 ![Application demo](demo.gif)
 
-## Tech Stack
+## Technologies
 
 - Server framework: `Node.js`
 - Request routing: `Express`
