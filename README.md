@@ -1,6 +1,6 @@
 # van-drivers
 
-> Web application for scheduling van drivers for climbing team practices.
+> Web application for scheduling van drivers for the Northeastern Climbing Team.
 
 ![Application demo](demo.gif)
 
