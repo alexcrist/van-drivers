@@ -26,8 +26,6 @@
 - `Node (6.11.2)`
 - `NPM (3.10.10)`
 
-### Run the Application Locally
-
 #### Install Dependencies
 
 `npm install`
