@@ -36,7 +36,7 @@
 - Set the `MONGODB_URI` environment variable
   - `export MONGODB_URI=mongodb://localhost`
   
-#### (*optional*) Set Up Slack Integration 
+#### Set Up Slack Integration (*optional*)
 
 - Make or already have a Slack team
 - Login to your team online
