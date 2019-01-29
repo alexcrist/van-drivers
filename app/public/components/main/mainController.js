@@ -23,7 +23,7 @@
       },
       {
         name: 'Tues',
-        numDrivers: 1
+        numDrivers: 2
       },
       {
         name: 'Wed',
