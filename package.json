@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "App for managing van drivers.",
   "engines": {
-    "node": "5.9.1"
+    "node": "10.11.0"
   },
   "main": "app/app.js",
   "scripts": {
