@@ -14,9 +14,13 @@ var controller = {
 
 // Sends a Slack message on the controller's channel with the given text
 function message(text) {
-  var options = { as_user: true };
+  var options = {
+    channel: CHANNEL,
+    text,
+    as_user: true
+  };
 
-  WEB_CLIENT.chat.postMessage(CHANNEL, text, options)
+  WEB_CLIENT.chat.postMessage(options)
     .then(function(res) {
       console.log('Slack message sent! ' + res);
     })
